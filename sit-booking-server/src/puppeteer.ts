@@ -1,9 +1,11 @@
-import puppeteer from 'puppeteer';
 import { Booking } from './types/Booking';
+import puppeteer from 'puppeteer';
 
 export const bookWithPuppeteer = async(booking: Booking): Promise<boolean> => {
   const browser = await puppeteer.launch({
     headless: false,
+    executablePath: '/usr/bin/chromium-browser',
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
   const page = await browser.newPage();
   await page.goto('http://ibooking.sit.no/');
