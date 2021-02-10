@@ -61,22 +61,22 @@ var fetchProfiles = function () { return __awaiter(void 0, void 0, void 0, funct
     });
 }); };
 var timeToNumberMap = {
-    '07:00': 1,
-    '08:00': 3,
-    '09:00': 5,
-    '10:00': 7,
-    '11:00': 9,
-    '12:00': 11,
-    '13:00': 13,
-    '14:00': 15,
-    '15:00': 17,
-    '16:00': 19,
-    '17:00': 21,
-    '18:00': 23,
-    '19:00': 25,
-    '20:00': 27,
-    '21:00': 29,
-    '22:00': 31,
+    '07:00': 3,
+    '08:00': 5,
+    '09:00': 7,
+    '10:00': 9,
+    '11:00': 11,
+    '12:00': 13,
+    '13:00': 15,
+    '14:00': 17,
+    '15:00': 19,
+    '16:00': 21,
+    '17:00': 23,
+    '18:00': 25,
+    '19:00': 27,
+    '20:00': 29,
+    '21:00': 31,
+    '22:00': 33,
 };
 var convertTimeToRowNumber = function (weekDay, time) {
     var timeNumber = timeToNumberMap[time];
@@ -86,7 +86,7 @@ var convertTimeToRowNumber = function (weekDay, time) {
     return timeNumber;
 };
 var getCurrentRowNumber = function (weekDay) {
-    var time = moment_1.default().startOf('hour').format('h');
+    var time = moment_1.default().startOf('hour').format('H');
     return timeToNumberMap[time + ":00"];
 };
 var bookingsThatShouldBeBooked = function (profiles) {
@@ -98,8 +98,6 @@ var bookingsThatShouldBeBooked = function (profiles) {
         if (preference && preference.length > 0) {
             var rowNumber = convertTimeToRowNumber(twoDaysInTheFuture, preference);
             var currentRowNumber = getCurrentRowNumber(twoDaysInTheFuture);
-            console.log(rowNumber);
-            console.log(currentRowNumber);
             if (rowNumber === currentRowNumber) {
                 var booking = {
                     day: twoDaysInTheFuture,

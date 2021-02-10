@@ -46,13 +46,14 @@ var bookWithPuppeteer = function (booking) { return __awaiter(void 0, void 0, vo
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, puppeteer_1.default.launch({
-                    headless: false,
+                    headless: true,
                 })];
             case 1:
                 browser = _a.sent();
                 return [4 /*yield*/, browser.newPage()];
             case 2:
                 page = _a.sent();
+                page.setDefaultTimeout(6000);
                 return [4 /*yield*/, page.goto('http://ibooking.sit.no/')];
             case 3:
                 _a.sent();
@@ -86,36 +87,47 @@ var bookWithPuppeteer = function (booking) { return __awaiter(void 0, void 0, vo
                 return [4 /*yield*/, page.waitForSelector('select[name=type]')];
             case 13:
                 _a.sent();
-                return [4 /*yield*/, page.$x("//ul[" + booking.day + "]/li[" + booking.rowNumber + "]/div/div/div/span")];
+                if (!(booking.day < 2)) return [3 /*break*/, 15];
+                return [4 /*yield*/, page.select('select[name=week]', '+1 weeks')];
             case 14:
-                cell = _a.sent();
-                return [4 /*yield*/, cell[0].click()];
-            case 15:
                 _a.sent();
-                return [4 /*yield*/, page.waitForTimeout(250)];
+                _a.label = 15;
+            case 15: return [4 /*yield*/, page.waitForTimeout(1000)];
             case 16:
                 _a.sent();
-                return [4 /*yield*/, page.waitForSelector('.ui-button-text')];
+                return [4 /*yield*/, page.waitForSelector('select[name=type]')];
             case 17:
                 _a.sent();
-                return [4 /*yield*/, page.click('.ui-button-text')];
+                return [4 /*yield*/, page.$x("//div[@id='schedule']/ul[" + (booking.day + 1) + "]/li[" + booking.rowNumber + "]/div")];
             case 18:
-                _a.sent();
-                return [4 /*yield*/, page.waitForSelector('input[name=submit]')];
+                cell = _a.sent();
+                return [4 /*yield*/, cell[0].click()];
             case 19:
                 _a.sent();
-                return [4 /*yield*/, page.waitForSelector('.order', { timeout: 500 })];
+                return [4 /*yield*/, page.waitForTimeout(250)];
             case 20:
-                if (!((_a.sent()) !== null)) return [3 /*break*/, 23];
-                return [4 /*yield*/, page.click('input[name=submit]')];
+                _a.sent();
+                return [4 /*yield*/, page.waitForSelector('.ui-button-text')];
             case 21:
                 _a.sent();
-                return [4 /*yield*/, page.close()];
+                return [4 /*yield*/, page.click('.ui-button-text')];
             case 22:
                 _a.sent();
-                return [2 /*return*/, true];
-            case 23: return [4 /*yield*/, page.close()];
+                return [4 /*yield*/, page.waitForSelector('input[name=submit]')];
+            case 23:
+                _a.sent();
+                return [4 /*yield*/, page.waitForSelector('.order', { timeout: 500 })];
             case 24:
+                if (!((_a.sent()) !== null)) return [3 /*break*/, 27];
+                return [4 /*yield*/, page.click('input[name=submit]')];
+            case 25:
+                _a.sent();
+                return [4 /*yield*/, browser.close()];
+            case 26:
+                _a.sent();
+                return [2 /*return*/, true];
+            case 27: return [4 /*yield*/, browser.close()];
+            case 28:
                 _a.sent();
                 return [2 /*return*/, false];
         }
