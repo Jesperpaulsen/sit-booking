@@ -69,5 +69,5 @@
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
   "include": ["src/**/*", "**/serviceAccount.json"],
-  "exclude": ["node_modules", "**/*.spec.ts", "functions"],
+  "exclude": ["node_modules", "**/*.spec.ts", "functions", "lib"],
 }

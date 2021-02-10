@@ -39,9 +39,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var puppeteer_1 = require("./puppeteer");
 var firebase_1 = require("./firebase");
 var moment_1 = __importDefault(require("moment"));
-var puppeteer_1 = require("./puppeteer");
 var failedBookings = [];
 var fetchProfiles = function () { return __awaiter(void 0, void 0, void 0, function () {
     var res, profilesSnapshot, _i, _a, profile;
@@ -98,6 +98,8 @@ var bookingsThatShouldBeBooked = function (profiles) {
         if (preference && preference.length > 0) {
             var rowNumber = convertTimeToRowNumber(twoDaysInTheFuture, preference);
             var currentRowNumber = getCurrentRowNumber(twoDaysInTheFuture);
+            console.log(rowNumber);
+            console.log(currentRowNumber);
             if (rowNumber === currentRowNumber) {
                 var booking = {
                     day: twoDaysInTheFuture,

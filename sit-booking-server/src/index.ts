@@ -1,8 +1,8 @@
-import { firestore } from './firebase';
-import { Profile } from './types/Profile';
-import moment from 'moment';
 import { Booking } from './types/Booking';
+import { Profile } from './types/Profile';
 import { bookWithPuppeteer } from './puppeteer';
+import { firestore } from './firebase';
+import moment from 'moment';
 
 const failedBookings = [];
 
@@ -46,7 +46,7 @@ const convertTimeToRowNumber = (weekDay: number, time: string) => {
 }
 
 const getCurrentRowNumber = (weekDay: number) => {
-  const time = moment().startOf('hour').format('h');
+  const time = moment().startOf('hour').format('H');
   return timeToNumberMap[`${time}:00`];
 }
 
