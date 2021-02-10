@@ -3,7 +3,7 @@ import puppeteer from 'puppeteer';
 
 export const bookWithPuppeteer = async(booking: Booking): Promise<boolean> => {
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     executablePath: '/usr/bin/chromium-browser',
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
@@ -31,9 +31,9 @@ export const bookWithPuppeteer = async(booking: Booking): Promise<boolean> => {
   await page.waitForSelector('input[name=submit]');
   if ((await page.waitForSelector('.order', {timeout: 500})) !== null) {
     await page.click('input[name=submit]');
-    await page.close();
+    await browser.close();
     return true;
   }
-  await page.close();
+  await browser.close();
   return false;
 }
