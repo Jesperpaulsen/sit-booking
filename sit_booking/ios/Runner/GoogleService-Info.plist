@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>848712124589-70hq1c3a28qmjk4qiurkpgtkpqu66839.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.848712124589-70hq1c3a28qmjk4qiurkpgtkpqu66839</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDyn2CJTqjN-3t3CWG6kjzZRmJh1S-SbuM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>848712124589</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>no.jesper.sit-booking</string>
+	<key>PROJECT_ID</key>
+	<string>sit-booking</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sit-booking.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:848712124589:ios:8c4a44e246621f8434de24</string>
+</dict>
+</plist>
