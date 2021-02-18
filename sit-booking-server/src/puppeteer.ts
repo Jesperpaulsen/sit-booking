@@ -3,7 +3,7 @@ import puppeteer from 'puppeteer';
 
 export const bookWithPuppeteer = async(booking: Booking): Promise<boolean> => {
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: false,
     // executablePath: '/usr/bin/chromium-browser',
     // args: ['--no-sandbox', '--disable-setuid-sandbox']
   });

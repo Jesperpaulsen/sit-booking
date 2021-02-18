@@ -47,7 +47,11 @@ const convertTimeToRowNumber = (weekDay: number, time: string) => {
 
 const getCurrentRowNumber = (weekDay: number) => {
   const time = moment().startOf('hour').format('H');
-  return timeToNumberMap[`${time}:00`];
+  const timeNumber = timeToNumberMap[`${time}:00`];
+  if (weekDay > 4) {
+    return timeNumber - 5;
+  }
+  return timeNumber;
 }
 
 const bookingsThatShouldBeBooked = (profiles: Profile[]) => {
@@ -59,6 +63,8 @@ const bookingsThatShouldBeBooked = (profiles: Profile[]) => {
     if (preference && preference.length > 0) {
       const rowNumber = convertTimeToRowNumber(twoDaysInTheFuture, preference);
       const currentRowNumber = getCurrentRowNumber(twoDaysInTheFuture);
+      console.log(rowNumber);
+      console.log(currentRowNumber);
       if (rowNumber === currentRowNumber) {
         const booking: Booking = {
           day: twoDaysInTheFuture,
