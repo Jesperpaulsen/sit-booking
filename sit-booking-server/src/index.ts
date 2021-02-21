@@ -1,10 +1,12 @@
 import { Booking } from './types/Booking';
 import { Profile } from './types/Profile';
 import { bookWithPuppeteer } from './puppeteer';
-import { firestore } from './firebase';
+import { firestore, messaging } from './firebase';
 import moment from 'moment';
+import FCMNotification from "./types/FCMNotification";
 
-const failedBookings = [];
+const failedBookings: Booking[] = [];
+const successfulBookings: Booking[] = [];
 
 const fetchProfiles = async () => {
   const res: Profile[] = [];
@@ -63,8 +65,6 @@ const bookingsThatShouldBeBooked = (profiles: Profile[]) => {
     if (preference && preference.length > 0) {
       const rowNumber = convertTimeToRowNumber(twoDaysInTheFuture, preference);
       const currentRowNumber = getCurrentRowNumber(twoDaysInTheFuture);
-      console.log(rowNumber);
-      console.log(currentRowNumber);
       if (rowNumber === currentRowNumber) {
         const booking: Booking = {
           day: twoDaysInTheFuture,
@@ -82,12 +82,55 @@ const bookBooking = async (booking: Booking) => {
   try {
     const success = await bookWithPuppeteer(booking);
     if (!success) throw new Error('Failed to book');
+    console.log('Booked booking ' + booking.profile.name);
+    successfulBookings.push(booking);
   } catch (e) {
     failedBookings.push(booking);
   }
 }
 
+const sendPushNotification = async (booking: Booking, payload: FCMNotification) => {
+  try {
+    await messaging.sendToDevice(booking.profile.FCMToken, payload);
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+const sendSuccessNotification = async () => {
+  for (const booking of successfulBookings) {
+    const payload: FCMNotification = {
+      notification: {
+        title: 'Booking gjennomført!',
+        body: `Vi fikk booket time kl. ${moment().startOf('hour').format('H')} på ${moment().add(2, 'days').format('dddd')}`
+      }
+    }
+    try {
+      await sendPushNotification(booking, payload);
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+
+const sendFailureNotification = async () => {
+  for (const booking of failedBookings) {
+    const payload: FCMNotification = {
+      notification: {
+        title: 'Booking ble ikke gjennomfør :(',
+        body: `Vi fikk ikke booket time kl. ${moment().startOf('hour').format('H')} på ${moment().add(2, 'days').format('dddd')}`
+      }
+    }
+    try {
+      await sendPushNotification(booking, payload);
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+
 const main = async () => {
+  console.log('Starting to book');
   const profiles = await fetchProfiles();
   const bookings = bookingsThatShouldBeBooked(profiles);
   const promises: Promise<void>[] = [];
@@ -97,6 +140,8 @@ const main = async () => {
   }
   try {
     await Promise.all(promises);
+    await sendSuccessNotification();
+    await sendFailureNotification();
   } catch (e) {
     console.log(e);
   }

@@ -5,4 +5,5 @@ export interface Profile {
   sitPassword: string;
   userID: string;
   preferences: string[]; // 0 = Monday, 1 = Tuesday, etc.
+  FCMToken: string;
 }

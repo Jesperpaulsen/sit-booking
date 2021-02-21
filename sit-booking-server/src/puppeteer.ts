@@ -3,14 +3,14 @@ import puppeteer from 'puppeteer';
 
 export const bookWithPuppeteer = async(booking: Booking): Promise<boolean> => {
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     // executablePath: '/usr/bin/chromium-browser',
     // args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
   const page = await browser.newPage();
-  page.setDefaultTimeout(6000);
+  page.setDefaultTimeout(15000);
   await page.goto('http://ibooking.sit.no/');
-
+  await page.waitForXPath("//a[contains(text(),'Logg inn')]");
   const logInBtn = await page.$x("//a[contains(text(),'Logg inn')]");
   await logInBtn[0].click();
 
