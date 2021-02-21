@@ -6,19 +6,21 @@ export const bookWithPuppeteer = async(booking: Booking): Promise<boolean> => {
     headless: true,
     // executablePath: '/usr/bin/chromium-browser',
     // args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: ['--incognito']
   });
   const page = await browser.newPage();
+  console.log('Hei');
   page.setDefaultTimeout(15000);
   await page.goto('http://ibooking.sit.no/');
   await page.waitForXPath("//a[contains(text(),'Logg inn')]");
   const logInBtn = await page.$x("//a[contains(text(),'Logg inn')]");
   await logInBtn[0].click();
-
+  console.log('Går til logger inn')
   await page.waitForSelector('input[name=username]');
   await page.type('input[name=username]', booking.profile.phone.toString());
   await page.type('input[name=password]', booking.profile.sitPassword);
   await page.click('.btn-primary');
-
+  console.log('Logger inn')
   await page.waitForSelector('select[name=type]');
   await page.select('select[name=type]', '13');
   await page.waitForTimeout(1000);
