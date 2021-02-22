@@ -45,5 +45,6 @@ export const bookWithPuppeteer = async(booking: Booking): Promise<boolean> => {
     return true;
   }
   await browser.close();
+  console.log('failed');
   return false;
 }
