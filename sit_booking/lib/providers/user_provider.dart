@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sit_booking/api/API.dart';
 import 'package:sit_booking/models/profile.dart';
+import 'package:sit_booking/services/push_notifications.dart';
 
 class UserState {
   bool loading;
@@ -17,7 +18,11 @@ class UserProvider extends StateNotifier<UserState> {
     FirebaseAuth.instance.authStateChanges().listen((user) async {
       if (user != null && user.uid.isNotEmpty) {
         final profile = await API.profile.mountProfile(user.uid);
+        await PushNotification.instance.requestPermission();
+        final token = await PushNotification.instance.getToken();
+        profile.FCMToken = token;
         setProfile(profile);
+        saveProfile();
       } else {
         setProfile(null);
       }
@@ -28,6 +33,11 @@ class UserProvider extends StateNotifier<UserState> {
     final newState = state;
     newState.profile = profile;
     state = newState;
+  }
+
+  updateToken(String token) {
+    final newState = state;
+    newState.profile.FCMToken = token;
   }
 
   updatePreference(int day, String preference) {

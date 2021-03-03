@@ -5,14 +5,17 @@ class Profile {
   String sitPassword;
   String userID;
   List<String> preferences;
+  String FCMToken;
 
-  Profile(
-      {this.email,
-      this.name,
-      this.phone,
-      this.sitPassword,
-      this.userID,
-      this.preferences});
+  Profile({
+    this.email,
+    this.name,
+    this.phone,
+    this.sitPassword,
+    this.userID,
+    this.preferences,
+    this.FCMToken,
+  });
 
   Profile.fromJson(Map<String, dynamic> json)
       : email = json['email'] ?? '',
@@ -20,6 +23,7 @@ class Profile {
         phone = json['phone'] ?? '',
         sitPassword = json['sitPassword'] ?? '',
         userID = json['userID'] ?? '',
+        FCMToken = json['FCMToken'] ?? '',
         preferences = convertDynamicListToStringList(json['preferences']);
 
   toJson() {
@@ -29,7 +33,8 @@ class Profile {
       'phone': phone,
       'sitPassword': sitPassword,
       'userID': userID,
-      'preferences': preferences
+      'preferences': preferences,
+      'FCMToken': FCMToken
     };
   }
 }

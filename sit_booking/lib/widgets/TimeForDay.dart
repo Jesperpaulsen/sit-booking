@@ -14,6 +14,7 @@ class TimeForDay extends StatefulWidget {
   final Function(int day, String preference) updatePreference;
   final String preference;
   final int dayNumber;
+  final now = DateTime.now();
 
   TimeForDay(this.updatePreference, this.preference, this.dayNumber);
 
@@ -23,11 +24,14 @@ class TimeForDay extends StatefulWidget {
 
 class _TimeForDayState extends State<TimeForDay> {
   Future<void> selectTime(BuildContext context) async {
-    final currentTime = widget.preference.split(':').first;
+    final hourAndMinute = widget.preference.split(':');
+    final hour = hourAndMinute[0];
+    final minute = hourAndMinute.length > 1 ? hourAndMinute[1] : '00';
 
     TimeOfDay selectedTime = await showTimePicker(
       initialTime: TimeOfDay(
-          hour: int.parse(currentTime) ?? DateTime.now().hour, minute: 0),
+          hour: int.parse(hour) ?? widget.now.hour,
+          minute: int.parse(minute) ?? widget.now.minute),
       context: context,
       builder: (BuildContext context, Widget child) {
         return MediaQuery(
@@ -39,7 +43,7 @@ class _TimeForDayState extends State<TimeForDay> {
       },
     );
     widget.updatePreference(widget.dayNumber,
-        '${selectedTime.hour < 10 ? '0${selectedTime.hour}' : selectedTime.hour}:00');
+        '${selectedTime.hour < 10 ? '0${selectedTime.hour}' : selectedTime.hour}:${selectedTime.minute == 30 ? 30 : '00'}');
   }
 
   @override
@@ -56,8 +60,8 @@ class _TimeForDayState extends State<TimeForDay> {
                 if (!isChecked)
                   widget.updatePreference(widget.dayNumber, '');
                 else
-                  widget.updatePreference(
-                      widget.dayNumber, '${DateTime.now().hour}:00');
+                  widget.updatePreference(widget.dayNumber,
+                      '${widget.now.hour}:${widget.now.minute == 30 ? 30 : '00'}');
               }),
           Text(weekdayMap[widget.dayNumber]),
           TextButton(

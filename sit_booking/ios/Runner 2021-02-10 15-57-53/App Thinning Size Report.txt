@@ -1,0 +1,155 @@
+
+App Thinning Size Report for All Variants of Runner
+
+Variant: sit_booking-0948A39D-D7DB-4522-8E2C-383E83F0F854.ipa
+Supported variant descriptors: [device: iPad8,11, os-version: 13.0], [device: iPad8,3, os-version: 14.0], [device: iPad8,5, os-version: 14.0], [device: iPad7,4, os-version: 13.0], [device: iPad11,4, os-version: 14.0], [device: iPad13,2, os-version: 14.0], [device: iPad8,10, os-version: 13.0], [device: iPad6,3, os-version: 13.0], [device: iPad8,6, os-version: 13.0], [device: iPad11,3, os-version: 14.0], [device: iPad8,7, os-version: 14.0], [device: iPad8,8, os-version: 14.0], [device: iPad8,2, os-version: 13.0], [device: iPad6,3, os-version: 14.0], [device: iPad11,1, os-version: 13.0], [device: iPad7,1, os-version: 13.0], [device: iPad13,1, os-version: 14.0], [device: iPad7,3, os-version: 13.0], [device: iPad8,4, os-version: 14.0], [device: iPad7,2, os-version: 13.0], [device: iPad8,11, os-version: 14.0], [device: iPad6,4, os-version: 14.0], [device: iPad11,1, os-version: 14.0], [device: iPad8,6, os-version: 14.0], [device: iPad8,7, os-version: 13.0], [device: iPad7,1, os-version: 14.0], [device: iPad8,9, os-version: 14.0], [device: iPad8,9, os-version: 13.0], [device: iPad8,8, os-version: 13.0], [device: iPad8,1, os-version: 14.0], [device: iPad8,3, os-version: 13.0], [device: iPad8,2, os-version: 14.0], [device: iPad8,10, os-version: 14.0], [device: iPad11,4, os-version: 13.0], [device: iPad11,3, os-version: 13.0], [device: iPad8,1, os-version: 13.0], [device: iPad8,12, os-version: 13.0], [device: iPad11,2, os-version: 13.0], [device: iPad6,4, os-version: 13.0], [device: iPad7,4, os-version: 14.0], [device: iPad7,2, os-version: 14.0], [device: iPad8,12, os-version: 14.0], [device: MacFamily20,1, os-version: 14.0], [device: iPad11,2, os-version: 14.0], [device: iPad8,4, os-version: 13.0], [device: iPad8,5, os-version: 13.0], and [device: iPad7,3, os-version: 14.0]
+App + On Demand Resources size: 10,5 MB compressed, 31,5 MB uncompressed
+App size: 10,5 MB compressed, 31,5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-0A48A404-FD8A-4F26-8E6D-D1632FB0E282.ipa
+Supported variant descriptors: [device: iPhone10,4, os-version: 12.2], [device: iPhone9,1, os-version: 12.2], [device: iPhone10,1, os-version: 12.2], and [device: iPhone9,3, os-version: 12.2]
+App + On Demand Resources size: 10,5 MB compressed, 31,4 MB uncompressed
+App size: 10,5 MB compressed, 31,4 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-1C34921D-9C9F-4E33-ACE7-258A9F89DFF5.ipa
+Supported variant descriptors: [device: iPhone9,3, os-version: 13.0], [device: iPhone9,3, os-version: 14.0], [device: iPhone12,8, os-version: 14.0], [device: iPhone9,1, os-version: 14.0], [device: iPhone10,1, os-version: 14.0], [device: iPhone10,4, os-version: 14.0], [device: iPhone10,4, os-version: 13.0], [device: iPhone10,1, os-version: 13.0], [device: iPhone12,8, os-version: 13.0], and [device: iPhone9,1, os-version: 13.0]
+App + On Demand Resources size: 10,5 MB compressed, 31,4 MB uncompressed
+App size: 10,5 MB compressed, 31,4 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-2B7654F1-2714-49DE-BDBA-EA7EEB3419EB.ipa
+Supported variant descriptors: [device: iPhone7,1, os-version: 12.0] and [device: iPhone8,2, os-version: 12.0]
+App + On Demand Resources size: 13 MB compressed, 39 MB uncompressed
+App size: 13 MB compressed, 39 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-312E1EFE-DEA3-4454-B55F-31D162B99BAF.ipa
+Supported variant descriptors: [device: iPhone10,6, os-version: 12.0], [device: iPhone9,2, os-version: 12.0], [device: iPhone10,2, os-version: 12.0], [device: iPhone11,2, os-version: 12.0], [device: iPhone10,3, os-version: 12.0], [device: iPhone11,4, os-version: 12.0], [device: iPhone10,5, os-version: 12.0], [device: iPhone11,6, os-version: 12.0], and [device: iPhone9,4, os-version: 12.0]
+App + On Demand Resources size: 13 MB compressed, 39 MB uncompressed
+App size: 13 MB compressed, 39 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-3A2C6771-DF2A-4132-941A-B1B41C9B1ADC.ipa
+Supported variant descriptors: [device: iPhone6,2, os-version: 12.2], [device: iPhone6,1, os-version: 12.2], [device: iPhone8,1, os-version: 12.2], [device: iPod9,1, os-version: 12.2], [device: iPhone8,4, os-version: 12.2], [device: iPhone7,2, os-version: 12.2], and [device: iPod7,1, os-version: 12.2]
+App + On Demand Resources size: 10,5 MB compressed, 31,4 MB uncompressed
+App size: 10,5 MB compressed, 31,4 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-3BCD73A4-45DF-4B55-A00B-496CCF0B882A.ipa
+Supported variant descriptors: [device: iPhone8,2, os-version: 13.0] and [device: iPhone8,2, os-version: 14.0]
+App + On Demand Resources size: 10,5 MB compressed, 31,4 MB uncompressed
+App size: 10,5 MB compressed, 31,4 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-4631A5A6-6C1D-4923-ACD4-5666BAC064E8.ipa
+Supported variant descriptors: [device: iPad6,11, os-version: 13.0], [device: iPad5,4, os-version: 13.0], [device: iPad7,5, os-version: 14.0], [device: iPad5,3, os-version: 14.0], [device: iPad11,6, os-version: 14.0], [device: iPad7,6, os-version: 14.0], [device: iPad5,2, os-version: 13.0], [device: iPad7,11, os-version: 13.0], [device: iPad6,7, os-version: 13.0], [device: iPad7,6, os-version: 13.0], [device: iPad6,12, os-version: 13.0], [device: iPad11,7, os-version: 14.0], [device: iPad5,1, os-version: 14.0], [device: iPad7,12, os-version: 14.0], [device: iPad5,3, os-version: 13.0], [device: iPad7,12, os-version: 13.0], [device: iPad5,1, os-version: 13.0], [device: iPad7,11, os-version: 14.0], [device: iPad6,8, os-version: 13.0], [device: iPad6,11, os-version: 14.0], [device: iPad5,2, os-version: 14.0], [device: iPad6,7, os-version: 14.0], [device: iPad6,8, os-version: 14.0], [device: iPad5,4, os-version: 14.0], [device: iPad6,12, os-version: 14.0], and [device: iPad7,5, os-version: 13.0]
+App + On Demand Resources size: 10,5 MB compressed, 31,5 MB uncompressed
+App size: 10,5 MB compressed, 31,5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-4E2500AC-27C0-472F-A6A5-2649EC9059CE.ipa
+Supported variant descriptors: [device: iPad8,6, os-version: 12.0], [device: iPad8,4, os-version: 12.0], [device: iPad7,1, os-version: 12.0], [device: iPad7,4, os-version: 12.0], [device: iPad8,2, os-version: 12.0], [device: iPad7,2, os-version: 12.0], [device: iPad8,5, os-version: 12.0], [device: iPad6,3, os-version: 12.0], [device: iPad8,1, os-version: 12.0], [device: iPad8,7, os-version: 12.0], [device: iPad7,3, os-version: 12.0], [device: iPad8,3, os-version: 12.0], [device: iPad8,8, os-version: 12.0], and [device: iPad6,4, os-version: 12.0]
+App + On Demand Resources size: 13 MB compressed, 39 MB uncompressed
+App size: 13 MB compressed, 39 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-55B71687-988B-46BA-ACE7-160DEF9090DE.ipa
+Supported variant descriptors: [device: iPhone8,4, os-version: 13.0], [device: iPod9,1, os-version: 14.0], [device: iPhone8,1, os-version: 13.0], [device: iPod9,1, os-version: 13.0], [device: iPhone8,4, os-version: 14.0], and [device: iPhone8,1, os-version: 14.0]
+App + On Demand Resources size: 10,5 MB compressed, 31,4 MB uncompressed
+App size: 10,5 MB compressed, 31,4 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-5FC977B4-3946-472E-9D11-6E492A5B5E15.ipa
+Supported variant descriptors: [device: iPhone9,1, os-version: 12.0], [device: iPhone9,3, os-version: 12.0], [device: iPhone10,1, os-version: 12.0], and [device: iPhone10,4, os-version: 12.0]
+App + On Demand Resources size: 13 MB compressed, 39 MB uncompressed
+App size: 13 MB compressed, 39 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-672C804A-6D38-45A2-8B92-0B282F08B4AB.ipa
+Supported variant descriptors: [device: iPad4,8, os-version: 12.0], [device: iPad6,11, os-version: 12.0], [device: iPad4,1, os-version: 12.0], [device: iPad7,5, os-version: 12.0], [device: iPad6,8, os-version: 12.0], [device: iPad4,7, os-version: 12.0], [device: iPad5,3, os-version: 12.0], [device: iPad4,9, os-version: 12.0], [device: iPad5,4, os-version: 12.0], [device: iPad7,6, os-version: 12.0], [device: iPad5,2, os-version: 12.0], [device: iPad4,6, os-version: 12.0], [device: iPad4,3, os-version: 12.0], [device: iPad4,5, os-version: 12.0], [device: iPad5,1, os-version: 12.0], [device: iPad6,12, os-version: 12.0], [device: iPad6,7, os-version: 12.0], [device: iPad4,2, os-version: 12.0], and [device: iPad4,4, os-version: 12.0]
+App + On Demand Resources size: 13 MB compressed, 39 MB uncompressed
+App size: 13 MB compressed, 39 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-6C296567-760D-4890-9AFD-3CB7442DD956.ipa
+Supported variant descriptors: [device: iPhone11,8, os-version: 12.2]
+App + On Demand Resources size: 10,5 MB compressed, 31,5 MB uncompressed
+App size: 10,5 MB compressed, 31,5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-8967FB41-4E56-4D60-BF2A-B58471C48045.ipa
+Supported variant descriptors: [device: iPhone8,1, os-version: 12.0], [device: iPhone7,2, os-version: 12.0], [device: iPhone6,1, os-version: 12.0], [device: iPhone8,4, os-version: 12.0], [device: iPhone6,2, os-version: 12.0], and [device: iPod7,1, os-version: 12.0]
+App + On Demand Resources size: 13 MB compressed, 39 MB uncompressed
+App size: 13 MB compressed, 39 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-896A3CC0-0D2E-4FEC-B641-0854EF3A4B17.ipa
+Supported variant descriptors: [device: iPad4,3, os-version: 12.2], [device: iPad4,2, os-version: 12.2], [device: iPad4,1, os-version: 12.2], [device: iPad5,1, os-version: 12.2], [device: iPad5,2, os-version: 12.2], [device: iPad5,3, os-version: 12.2], [device: iPad4,4, os-version: 12.2], [device: iPad4,8, os-version: 12.2], [device: iPad6,11, os-version: 12.2], [device: iPad7,5, os-version: 12.2], [device: iPad6,8, os-version: 12.2], [device: iPad4,6, os-version: 12.2], [device: iPad4,7, os-version: 12.2], [device: iPad4,9, os-version: 12.2], [device: iPad5,4, os-version: 12.2], [device: iPad6,7, os-version: 12.2], [device: iPad4,5, os-version: 12.2], [device: iPad6,12, os-version: 12.2], and [device: iPad7,6, os-version: 12.2]
+App + On Demand Resources size: 10,5 MB compressed, 31,5 MB uncompressed
+App size: 10,5 MB compressed, 31,5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-9DE898D4-DB7F-448B-9A5D-79B476E28AD2.ipa
+Supported variant descriptors: [device: iPhone12,1, os-version: 14.0], [device: iPhone11,8, os-version: 14.0], [device: iPhone12,1, os-version: 13.0], and [device: iPhone11,8, os-version: 13.0]
+App + On Demand Resources size: 10,5 MB compressed, 31,5 MB uncompressed
+App size: 10,5 MB compressed, 31,5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-A516A1CF-A0F6-4C16-8BAD-F712CE822309.ipa
+Supported variant descriptors: [device: iPad8,6, os-version: 12.2], [device: iPad7,2, os-version: 12.2], [device: iPad11,4, os-version: 12.2], [device: iPad7,1, os-version: 12.2], [device: iPad11,3, os-version: 12.2], [device: iPad8,1, os-version: 12.2], [device: iPad8,3, os-version: 12.2], [device: iPad7,3, os-version: 12.2], [device: iPad8,7, os-version: 12.2], [device: iPad8,8, os-version: 12.2], [device: iPad6,4, os-version: 12.2], [device: iPad8,5, os-version: 12.2], [device: iPad7,4, os-version: 12.2], [device: iPad11,1, os-version: 12.2], [device: iPad8,2, os-version: 12.2], [device: iPad8,4, os-version: 12.2], [device: iPad6,3, os-version: 12.2], and [device: iPad11,2, os-version: 12.2]
+App + On Demand Resources size: 10,5 MB compressed, 31,5 MB uncompressed
+App size: 10,5 MB compressed, 31,5 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-A58FE2BA-BFB7-4C3C-AB1E-AC5109F80AA4.ipa
+Supported variant descriptors: [device: iPhone11,6, os-version: 13.0], [device: iPhone11,4, os-version: 14.0], [device: iPhone12,3, os-version: 13.0], [device: iPhone10,5, os-version: 13.0], [device: iPhone11,2, os-version: 13.0], [device: iPhone11,4, os-version: 13.0], [device: iPhone9,2, os-version: 14.0], [device: iPhone13,3, os-version: 14.0], [device: iPhone11,6, os-version: 14.0], [device: iPhone10,3, os-version: 13.0], [device: iPhone10,6, os-version: 14.0], [device: iPhone11,2, os-version: 14.0], [device: iPhone10,6, os-version: 13.0], [device: iPhone12,3, os-version: 14.0], [device: iPhone13,1, os-version: 14.0], [device: iPhone12,5, os-version: 14.0], [device: iPhone10,2, os-version: 13.0], [device: iPhone13,4, os-version: 14.0], [device: iPhone10,5, os-version: 14.0], [device: iPhone9,4, os-version: 14.0], [device: iPhone10,3, os-version: 14.0], [device: iPhone9,2, os-version: 13.0], [device: iPhone12,5, os-version: 13.0], [device: iPhone10,2, os-version: 14.0], [device: iPhone13,2, os-version: 14.0], and [device: iPhone9,4, os-version: 13.0]
+App + On Demand Resources size: 10,5 MB compressed, 31,4 MB uncompressed
+App size: 10,5 MB compressed, 31,4 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-AEDD7924-5162-4DED-AB4B-F8E2BD2205A9.ipa
+Supported variant descriptors: [device: iPhone11,8, os-version: 12.0]
+App + On Demand Resources size: 13 MB compressed, 39 MB uncompressed
+App size: 13 MB compressed, 39 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-B285E6CE-6B05-4C93-83FE-837535F3B098.ipa
+Supported variant descriptors: [device: iPhone7,1, os-version: 12.2] and [device: iPhone8,2, os-version: 12.2]
+App + On Demand Resources size: 10,5 MB compressed, 31,4 MB uncompressed
+App size: 10,5 MB compressed, 31,4 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking-EABDC043-553B-4D1B-9FE3-7517BBA05082.ipa
+Supported variant descriptors: [device: iPhone10,2, os-version: 12.2], [device: iPhone10,5, os-version: 12.2], [device: iPhone10,3, os-version: 12.2], [device: iPhone11,2, os-version: 12.2], [device: iPhone9,2, os-version: 12.2], [device: iPhone9,4, os-version: 12.2], [device: iPhone11,4, os-version: 12.2], [device: iPhone10,6, os-version: 12.2], and [device: iPhone11,6, os-version: 12.2]
+App + On Demand Resources size: 10,5 MB compressed, 31,4 MB uncompressed
+App size: 10,5 MB compressed, 31,4 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: sit_booking.ipa
+Supported variant descriptors: Universal
+App + On Demand Resources size: 13 MB compressed, 39,1 MB uncompressed
+App size: 13 MB compressed, 39,1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
