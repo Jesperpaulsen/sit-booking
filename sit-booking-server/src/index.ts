@@ -114,8 +114,8 @@ const convertTimeToRowNumber = (weekDay: number, preference: Preference) => {
 }
 
 const getCurrentRowNumber = (weekDay: number) => {
-  const currentTime = moment().startOf('minute');
-  const minutes = currentTime.minutes() > 30 ? '30' : '00';
+  const currentTime = moment();
+  const minutes = currentTime.minutes() >= 30 ? '30' : '00';
   const time = moment().startOf('hour').format('HH');
   const timeNumber = timeToNumberMap[`${time}:${minutes}`];
   if (weekDay > 4) {
