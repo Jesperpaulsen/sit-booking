@@ -1,10 +1,12 @@
+import 'package:sit_booking/models/preference.dart';
+
 class Profile {
   String email;
   String name;
   int phone;
   String sitPassword;
   String userID;
-  List<String> preferences;
+  List<Preference> preferences;
   String FCMToken;
 
   Profile({
@@ -24,7 +26,7 @@ class Profile {
         sitPassword = json['sitPassword'] ?? '',
         userID = json['userID'] ?? '',
         FCMToken = json['FCMToken'] ?? '',
-        preferences = convertDynamicListToStringList(json['preferences']);
+        preferences = convertDynamicListToPreferenceList(json['preferences']);
 
   toJson() {
     return {
@@ -33,16 +35,20 @@ class Profile {
       'phone': phone,
       'sitPassword': sitPassword,
       'userID': userID,
-      'preferences': preferences,
+      'preferences':
+          preferences.map((preference) => preference.toJson()).toList(),
       'FCMToken': FCMToken
     };
   }
 }
 
-convertDynamicListToStringList(List<dynamic> jsonList) {
-  final List<String> res = [];
+convertDynamicListToPreferenceList(List<dynamic> jsonList) {
+  final List<Preference> res = [];
   for (final object in jsonList) {
-    res.add(object as String);
+    if (object is String)
+      res.add(Preference(time: object, isDoubleBooking: false));
+    else
+      res.add(Preference.fromJson(object));
   }
   return res;
 }

@@ -5,4 +5,10 @@ export interface Booking {
   rowNumber: number;
   profile: Profile;
   retries: number;
+  status: STATUS;
+}
+export enum STATUS {
+  BOOKED = 'BOOKED',
+  WAITING_LIST = 'WAITING_LIST',
+  FAILED = 'FAILED',
 }

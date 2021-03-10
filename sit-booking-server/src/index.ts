@@ -1,14 +1,17 @@
-import { Booking } from './types/Booking';
+import { firestore, messaging } from './firebase';
+
+import { Booking, STATUS } from './types/Booking';
+import FCMNotification from "./types/FCMNotification";
+import { Preference } from './types/Preference';
 import { Profile } from './types/Profile';
 import { bookWithPuppeteer } from './puppeteer';
-import { firestore, messaging } from './firebase';
 import moment from 'moment';
-import FCMNotification from "./types/FCMNotification";
 
 moment.locale('nb');
 
 const failedBookings: Booking[] = [];
 const successfulBookings: Booking[] = [];
+const waitingBookings: Booking[] = [];
 
 let fetchProfileRetries = 0;
 
@@ -31,26 +34,43 @@ const fetchProfiles = async (): Promise<Profile[]> => {
 }
 
 const timeToNumberMap: {[timestamp: string]: number} = {
+  '06:00': 1,
+  '06:30': 2,
   '07:00': 3,
+  '07:30': 4,
   '08:00': 5,
+  '08:30': 6,
   '09:00': 7,
+  '09:30': 8,
   '10:00': 9,
+  '10:30': 10,
   '11:00': 11,
+  '11:30': 12,
   '12:00': 13,
+  '12:30': 14,
   '13:00': 15,
+  '13:30': 16,
   '14:00': 17,
+  '14:30': 18,
   '15:00': 19,
+  '15:30': 20,
   '16:00': 21,
+  '16:30': 22,
   '17:00': 23,
+  '17:30': 24,
   '18:00': 25,
-  '19:00': 27, 
+  '18:30': 26,
+  '19:00': 27,
+  '19:30': 28, 
   '20:00': 29,
+  '20:30': 30,
   '21:00': 31,
+  '21:30': 32,
   '22:00': 33,
 };
 
-const convertTimeToRowNumber = (weekDay: number, time: string) => {
-  const timeNumber = timeToNumberMap[time];
+const convertTimeToRowNumber = (weekDay: number, preference: Preference) => {
+  const timeNumber = timeToNumberMap[preference.time];
   if (weekDay > 4) {
     return timeNumber - 5;
   }
@@ -58,9 +78,10 @@ const convertTimeToRowNumber = (weekDay: number, time: string) => {
 }
 
 const getCurrentRowNumber = (weekDay: number) => {
+  const currentTime = moment().startOf('minute');
+  const minutes = currentTime.minutes() > 30 ? '30' : '00';
   const time = moment().startOf('hour').format('HH');
-  console.log(time);
-  const timeNumber = timeToNumberMap[`${time}:00`];
+  const timeNumber = timeToNumberMap[`${time}:${minutes}`];
   if (weekDay > 4) {
     return timeNumber - 5;
   }
@@ -71,45 +92,52 @@ const bookingsThatShouldBeBooked = (profiles: Profile[]) => {
   const twoDaysInTheFuture = moment().add(2, 'days').weekday();
   console.log(twoDaysInTheFuture);
   const bookings: Booking[] = [];
-
   for (const profile of profiles) {
-    const preference = profile.preferences[twoDaysInTheFuture];
-    if (preference && preference.length > 0) {
-      const rowNumber = convertTimeToRowNumber(twoDaysInTheFuture, preference);
-      const currentRowNumber = getCurrentRowNumber(twoDaysInTheFuture);
-
-      if (rowNumber === currentRowNumber) {
-        console.log('Found booking to book');
-        const booking: Booking = {
-          day: twoDaysInTheFuture,
-          rowNumber,
-          profile,
-          retries: 0,
-        };
-        bookings.push(booking);
+    try {
+      const preference = profile.preferences[twoDaysInTheFuture];
+      console.log(preference);
+      if (preference && preference.time && preference.time.length > 0) {
+        let rowNumber = convertTimeToRowNumber(twoDaysInTheFuture, preference);
+        if (preference.isDoubleBooking) rowNumber += 2;
+        const currentRowNumber = getCurrentRowNumber(twoDaysInTheFuture);
+        console.log(rowNumber, currentRowNumber);
+        if (rowNumber === currentRowNumber) {
+          console.log('Found booking to book');
+          const booking: Booking = {
+            day: twoDaysInTheFuture,
+            rowNumber,
+            profile,
+            retries: 0,
+            status: STATUS.FAILED,
+          };
+          bookings.push(booking);
+        }
       }
+    } catch(e) {
+      continue;
     }
   }
   return bookings;
 }
 
-const bookBooking = async (booking: Booking): Promise<void> => {
+const bookBooking = async (booking: Booking, defaultTimeOut: number): Promise<void> => {
   try {
-    const success = await bookWithPuppeteer(booking);
-    if (!success) throw new Error('Failed to book');
+    const status = await bookWithPuppeteer(booking, defaultTimeOut);
+    if (!status || status === STATUS.FAILED) throw new Error('Failed to book');
+    else if (status === STATUS.BOOKED) successfulBookings.push(booking);
+    else if (status === STATUS.WAITING_LIST) waitingBookings.push(booking);
     console.log('Booked booking ' + booking.profile.name);
-    successfulBookings.push(booking);
   } catch (e) {
     console.log(e);
     booking.retries ++;
-    if (booking.retries < 20 && moment().minute() < 5) return bookBooking(booking);
+    if (booking.retries < 30) return bookBooking(booking, defaultTimeOut + 500 * booking.retries);
     failedBookings.push(booking);
   }
 }
 
 const sendPushNotification = async (booking: Booking, payload: FCMNotification) => {
   try {
-    await messaging.sendToDevice(booking.profile.FCMToken, payload);
+    await messaging.sendToDevice(booking.profile.FCMToken, payload, { priority: 'high' });
   } catch (e) {
     console.log(e)
   }
@@ -131,13 +159,29 @@ const sendSuccessNotification = async () => {
   }
 }
 
+const sendWaitingNotification = async () => {
+  for (const booking of waitingBookings) {
+    const payload: FCMNotification = {
+      notification: {
+        title: booking.retries === 0 ? 'Det kan se ut som om det ble venteliste... 😑' : `Du ble satt på venteliste etter ${booking.retries} forsøk 😑`,
+        body: `Vi fikk venteliste på time kl. ${moment().startOf('hour').format('H')} på ${moment().add(2, 'days').format('dddd')}`
+      }
+    }
+    try {
+      await sendPushNotification(booking, payload);
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+
 const sendFailureNotification = async () => {
   for (const booking of failedBookings) {
     console.log(booking.profile.name);
     const payload: FCMNotification = {
       notification: {
         title: 'Booking ble ikke gjennomført 😭',
-        body: `Vi fikk ikke booket time kl. ${moment().startOf('hour').format('H')} på ${moment().add(2, 'days').format('dddd')}. Vi prøvde å booke denne timen ${booking.retries} ganger i 5 minutter.`
+        body: `Vi fikk ikke booket time kl. ${moment().startOf('hour').format('H')} på ${moment().add(2, 'days').format('dddd')}. Vi prøvde å booke denne timen ${booking.retries} ganger.`
       }
     }
     try {
@@ -157,7 +201,7 @@ const main = async (): Promise<void> => {
   const promises: Promise<void>[] = [];
 
   for (const booking of bookings) {
-    promises.push(bookBooking(booking));
+    promises.push(bookBooking(booking, 15000));
   }
   try {
     await Promise.all(promises);
@@ -166,6 +210,7 @@ const main = async (): Promise<void> => {
   }
   try {
     await sendSuccessNotification();
+    await sendWaitingNotification();
     await sendFailureNotification();
   } catch (e) {
     console.log(e);

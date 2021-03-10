@@ -45,6 +45,7 @@ class _LogInState extends State<LogIn> {
                 decoration: InputDecoration(labelText: 'E-post'),
               ),
               TextFormField(
+                obscureText: true,
                 controller: passwordController,
                 decoration: InputDecoration(labelText: 'Passord'),
               ),

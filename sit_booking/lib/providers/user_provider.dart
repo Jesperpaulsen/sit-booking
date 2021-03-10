@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sit_booking/api/API.dart';
+import 'package:sit_booking/models/preference.dart';
 import 'package:sit_booking/models/profile.dart';
 import 'package:sit_booking/services/push_notifications.dart';
 
@@ -40,7 +41,7 @@ class UserProvider extends StateNotifier<UserState> {
     newState.profile.FCMToken = token;
   }
 
-  updatePreference(int day, String preference) {
+  updatePreference(int day, Preference preference) {
     final newState = state;
     newState.profile.preferences[day] = preference;
     state = newState;

@@ -29,17 +29,22 @@ class Home extends StatelessWidget {
                           .preferences
                           .asMap()
                           .entries
-                          .map((entry) => TimeForDay(
+                          .map(
+                            (entry) => TimeForDay(
                               userProvider.updatePreference,
                               entry.value,
-                              entry.key))
+                              entry.key,
+                            ),
+                          )
                           .toList()),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      onPressed: userProvider.saveProfile,
-                      child: Text('Lagre'),
-                    ),
+                    child: loading
+                        ? CircularProgressIndicator()
+                        : ElevatedButton(
+                            onPressed: userProvider.saveProfile,
+                            child: Text('Lagre'),
+                          ),
                   ),
                 ],
               );

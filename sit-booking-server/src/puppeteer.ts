@@ -1,7 +1,7 @@
-import { Booking } from './types/Booking';
+import { Booking, STATUS } from './types/Booking';
 import puppeteer from 'puppeteer';
 
-export const bookWithPuppeteer = async(booking: Booking): Promise<boolean> => {
+export const bookWithPuppeteer = async(booking: Booking, defaultTimeOut: number): Promise<STATUS> => {
   const browser = await puppeteer.launch({
     headless: true,
     // executablePath: '/usr/bin/chromium-browser',
@@ -10,12 +10,8 @@ export const bookWithPuppeteer = async(booking: Booking): Promise<boolean> => {
   });
   const page = await browser.newPage();
   console.log('Hei');
-  page.setDefaultTimeout(15000);
-  await page.goto('http://ibooking.sit.no/');
-  await page.waitForXPath("//a[contains(text(),'Logg inn')]");
-  const logInBtn = await page.$x("//a[contains(text(),'Logg inn')]");
-  await logInBtn[0].click();
-  console.log('Går til logger inn')
+  page.setDefaultTimeout(defaultTimeOut);
+  await page.goto('http://ibooking.sit.no/index.php?page=login');
   await page.waitForSelector('input[name=username]');
   await page.type('input[name=username]', booking.profile.phone.toString());
   await page.type('input[name=password]', booking.profile.sitPassword);
@@ -35,16 +31,28 @@ export const bookWithPuppeteer = async(booking: Booking): Promise<boolean> => {
   const cell = await page.$x(`//div[@id='schedule']/ul[${booking.day + 1}]/li[${booking.rowNumber}]/div`);
   await cell[0].click();
 
-  await page.waitForTimeout(250);
+  await page.waitForTimeout(1000);
   await page.waitForSelector('.ui-button-text');
   await page.click('.ui-button-text');
   await page.waitForSelector('input[name=submit]');
-  if ((await page.waitForSelector('.order', {timeout: 500})) !== null) {
-    await page.click('input[name=submit]');
-    await browser.close();
-    return true;
+  try {
+    if ((await page.waitForSelector('input[value="Reserver"]', {timeout: 500})) !== null) {
+      await page.click('input[name=submit]');
+      await browser.close();
+      return STATUS.BOOKED;
+    }
+  } catch (e) {
+    try {
+      if ((await page.waitForSelector('input[value="Sett på venteliste"]', {timeout: 500})) !== null)  {
+        await page.click('input[name=submit]');
+        await browser.close();
+        return STATUS.WAITING_LIST;
+      }
+    } catch (e) {
+      console.log(e);
+    }
   }
   await browser.close();
   console.log('failed');
-  return false;
+  return STATUS.FAILED;
 }
