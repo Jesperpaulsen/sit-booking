@@ -69,6 +69,42 @@ const timeToNumberMap: {[timestamp: string]: number} = {
   '22:00': 33,
 };
 
+const numberToTimestamp: {[timestamp: number]: string} = {
+  1: '06:00',
+  2: '06:30',
+  3: '07:00',
+  4: '07:30',
+  5: '08:00',
+  6: '08:30',
+  7: '09:00',
+  8: '09:30',
+  9: '10:00',
+  10: '10:30',
+  11: '11:00',
+  12: '11:30',
+  13: '12:00',
+  14: '12:30',
+  15: '13:00',
+  16: '13:30',
+  17: '14:00',
+  18: '14:30',
+  19: '15:00',
+  20: '15:30',
+  21: '16:00',
+  22: '16:30',
+  23: '17:00',
+  24: '17:30',
+  25: '18:00',
+  26: '18:30',
+  27: '19:00',
+  28: '19:30',
+  29: '20:00',
+  30: '20:30',
+  31: '21:00',
+  32: '21:30',
+  33: '22:00',
+};
+
 const convertTimeToRowNumber = (weekDay: number, preference: Preference) => {
   const timeNumber = timeToNumberMap[preference.time];
   if (weekDay > 4) {
@@ -148,7 +184,7 @@ const sendSuccessNotification = async () => {
     const payload: FCMNotification = {
       notification: {
         title: booking.retries === 0 ? 'Booking gjennomført 🤠🎉' : `Booking gjennomført etter ${booking.retries} forsøk 🙂🙂`,
-        body: `Vi fikk booket time kl. ${moment().startOf('hour').format('H')} på ${moment().add(2, 'days').format('dddd')}`
+        body: `Vi fikk booket time kl. ${numberToTimestamp[booking.rowNumber]} på ${moment().add(2, 'days').format('dddd')}`
       }
     }
     try {
@@ -164,7 +200,7 @@ const sendWaitingNotification = async () => {
     const payload: FCMNotification = {
       notification: {
         title: booking.retries === 0 ? 'Det kan se ut som om det ble venteliste... 😑' : `Du ble satt på venteliste etter ${booking.retries} forsøk 😑`,
-        body: `Vi fikk venteliste på time kl. ${moment().startOf('hour').format('H')} på ${moment().add(2, 'days').format('dddd')}`
+        body: `Vi fikk venteliste på time kl. ${numberToTimestamp[booking.rowNumber]} på ${moment().add(2, 'days').format('dddd')}`
       }
     }
     try {
@@ -181,7 +217,7 @@ const sendFailureNotification = async () => {
     const payload: FCMNotification = {
       notification: {
         title: 'Booking ble ikke gjennomført 😭',
-        body: `Vi fikk ikke booket time kl. ${moment().startOf('hour').format('H')} på ${moment().add(2, 'days').format('dddd')}. Vi prøvde å booke denne timen ${booking.retries} ganger.`
+        body: `Vi fikk ikke booket time kl. ${numberToTimestamp[booking.rowNumber]} på ${moment().add(2, 'days').format('dddd')}. Vi prøvde å booke denne timen ${booking.retries} ganger.`
       }
     }
     try {
