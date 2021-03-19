@@ -8,4 +8,5 @@ export interface Profile {
   userID: string;
   preferences: Preference[]; // 0 = Monday, 1 = Tuesday, etc.
   FCMToken: string;
+  lastPasswordReset: number;
 }

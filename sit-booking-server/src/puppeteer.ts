@@ -1,5 +1,7 @@
 import { Booking, STATUS } from './types/Booking';
 import puppeteer from 'puppeteer';
+import { Profile } from './types/Profile';
+import moment from 'moment';
 
 export const bookWithPuppeteer = async(booking: Booking, defaultTimeOut: number): Promise<STATUS> => {
   const browser = await puppeteer.launch({
@@ -55,4 +57,23 @@ export const bookWithPuppeteer = async(booking: Booking, defaultTimeOut: number)
   await browser.close();
   console.log('failed');
   return STATUS.FAILED;
+}
+
+export const resetPasswordWithPuppeteer = async(profile: Profile): Promise<boolean> => {
+  const browser = await puppeteer.launch({
+    headless: true,
+    // executablePath: '/usr/bin/chromium-browser',
+    // args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: ['--incognito']
+  });
+  const page = await browser.newPage();
+  console.log('Resetter passord');
+  page.setDefaultTimeout(15000);
+  await page.goto('http://ibooking.sit.no/index.php?page=password');
+  await page.waitForSelector('input[name=user_email]');
+  await page.type('input[name=user_email]', profile.phone.toString());
+  await page.click('.btn-primary');
+  profile.lastPasswordReset = moment().unix();
+  await browser.close();
+  return true;
 }
