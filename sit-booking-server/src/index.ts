@@ -56,7 +56,7 @@ const bookBooking = async (booking: Booking, defaultTimeOut: number): Promise<vo
   } catch (e) {
     console.log(e);
     booking.retries ++;
-    if (booking.retries < 30) return bookBooking(booking, defaultTimeOut + 500 * booking.retries);
+    if (booking.retries < 15) return bookBooking(booking, defaultTimeOut + 500 * booking.retries);
     failedBookings.push(booking);
   }
 }

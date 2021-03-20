@@ -17,7 +17,11 @@ export const bookWithPuppeteer = async(booking: Booking, defaultTimeOut: number)
   await page.waitForSelector('input[name=username]');
   await page.type('input[name=username]', booking.profile.phone.toString());
   await page.type('input[name=password]', booking.profile.sitPassword);
-  await page.click('.btn-primary');
+  try {
+    await page.click('input[name=submit]');
+  } catch (e) {
+    console.log('Didnt find login btn');
+  }
   console.log('Logger inn')
   await page.waitForSelector('select[name=type]');
   await page.select('select[name=type]', '13');

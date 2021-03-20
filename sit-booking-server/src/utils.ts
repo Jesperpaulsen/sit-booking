@@ -11,9 +11,10 @@ export const fetchProfiles = async (): Promise<Profile[]> => {
   try {
     const res: Profile[] = [];
 
-    const profilesSnapshot = await firestore.collection('profiles').where('userID', '==', 'vVTJ9MQmktOpSWAPbnNqZ1Z3JTF3').get();
+    const profilesSnapshot = await firestore.collection('profiles').where('sitDown', '==', true).get();
 
     for (const profile of profilesSnapshot.docs) {
+      console.log(profile.id);
       res.push(profile.data() as Profile);
     }
 
