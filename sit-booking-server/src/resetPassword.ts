@@ -4,7 +4,7 @@ import { Preference } from "./types/Preference";
 import { Profile } from "./types/Profile";
 import { convertTimeToRowNumber, fetchProfiles, timeToNumberMap, updateProfiles } from "./utils"
 
-// HH:45 and HH:15
+// HH:50 and HH:20
 
 export const getClosestRowNumber = (weekDay: number) => {
   const currentTime = moment();
@@ -42,8 +42,9 @@ const passwordsThatShouldBeReset = (profiles: Profile[]): Profile[] => {
   for (const profile of profiles) {
     const preference = profile.preferences[twoDaysInTheFuture];
     if (preference && preference.time && preference.time.length > 0) {
-      const rowNumber = convertTimeToRowNumber(twoDaysInTheFuture, preference);
+      let rowNumber = convertTimeToRowNumber(twoDaysInTheFuture, preference);
       const closestRowNumber = getClosestRowNumber(twoDaysInTheFuture);
+      if (preference.isDoubleBooking && rowNumber + 2 === closestRowNumber) rowNumber += 2;
       console.log(rowNumber, closestRowNumber)
       if (rowNumber === closestRowNumber) {
         res.push(profile);
