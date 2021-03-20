@@ -41,9 +41,10 @@ const passwordsThatShouldBeReset = (profiles: Profile[]): Profile[] => {
   const lastday = moment().startOf('day').add(6, 'hours').unix();
   for (const profile of profiles) {
     const preference = profile.preferences[twoDaysInTheFuture];
-    if (preference && preference.time && preference.time.length > 0 && (profile.lastPasswordReset < lastday || !profile.lastPasswordReset)) {
+    if (preference && preference.time && preference.time.length > 0) {
       const rowNumber = convertTimeToRowNumber(twoDaysInTheFuture, preference);
       const closestRowNumber = getClosestRowNumber(twoDaysInTheFuture);
+      console.log(rowNumber, closestRowNumber)
       if (rowNumber === closestRowNumber) {
         res.push(profile);
       }
