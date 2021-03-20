@@ -12,6 +12,6 @@ class ProfileAPI {
     return FirebaseFirestore.instance
         .collection('profiles')
         .doc(profile.userID)
-        .set(profile.toJson());
+        .update(profile.toJson());
   }
 }
