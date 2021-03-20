@@ -25,7 +25,7 @@ const bookingsThatShouldBeBooked = (profiles: Profile[]) => {
       if (preference && preference.time && preference.time.length > 0) {
         let rowNumber = convertTimeToRowNumber(twoDaysInTheFuture, preference);
         const currentRowNumber = getCurrentRowNumber(twoDaysInTheFuture);
-        if (preference.isDoubleBooking && rowNumber < currentRowNumber) rowNumber += 2;
+        if (preference.isDoubleBooking && rowNumber + 2 === currentRowNumber) rowNumber += 2;
         console.log(rowNumber, currentRowNumber);
         if (rowNumber === currentRowNumber) {
           console.log('Found booking to book');
