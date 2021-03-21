@@ -1,4 +1,4 @@
-package com.example.sit_booking
+package no.jesper.sit_booking
 
 import io.flutter.embedding.android.FlutterActivity
 

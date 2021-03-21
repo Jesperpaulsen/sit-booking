@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "848712124589",
+    "project_id": "sit-booking",
+    "storage_bucket": "sit-booking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848712124589:android:b5f93db8a58254ae34de24",
+        "android_client_info": {
+          "package_name": "no.jesper.sit_booking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848712124589-favac2g8m8qfk2cqtbm8kagackkcqi62.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7SlbRAw-3LO0eH354Zx-U0eFPTdty6xo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848712124589-favac2g8m8qfk2cqtbm8kagackkcqi62.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "848712124589-70hq1c3a28qmjk4qiurkpgtkpqu66839.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "no.jesper.sit-booking"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
